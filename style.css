@@ -1,0 +1,24 @@
+.menu{
+    display: flex;
+    background-color: #E6E6E6;
+    width: 634px;
+    height: 797px;
+    border-radius: 15px;
+    background-position: center;
+    margin: auto;
+    margin-top: 100px;
+
+}
+
+.inmenu{
+    display: flex;
+    width: 514px;
+    height: 621px;
+    border-radius: 14px;
+    background-color: white;
+    background-position: center;
+    margin: auto;
+    margin-top: 140px;
+    
+
+}
