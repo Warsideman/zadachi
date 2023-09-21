@@ -9,16 +9,27 @@
     margin-top: 100px;
 
 }
+.above_in_menu{
+    width: 359px;
+    height: 66px;
+    background-color: white;
+    
 
-.inmenu{
+    
+
+}
+.in_menu{
     display: flex;
     width: 514px;
     height: 621px;
     border-radius: 14px;
     background-color: white;
-    background-position: center;
     margin: auto;
-    margin-top: 140px;
+    align-items: center;
+    margin-top: 150px;
+    
+    
     
 
 }
+
