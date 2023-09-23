@@ -1,35 +1,69 @@
-.menu{
-    display: flex;
-    background-color: #E6E6E6;
-    width: 634px;
-    height: 797px;
-    border-radius: 15px;
-    background-position: center;
-    margin: auto;
-    margin-top: 100px;
-
+html, body{
+    margin: 0;
+    padding: 0;
 }
-.above_in_menu{
-    width: 359px;
-    height: 66px;
-    background-color: white;
-    
-
-    
-
-}
-.in_menu{
+.wrapper{
+    height: 100vh;
     display: flex;
-    width: 514px;
-    height: 621px;
-    border-radius: 14px;
-    background-color: white;
-    margin: auto;
     align-items: center;
-    margin-top: 150px;
-    
-    
-    
+    justify-content: center;
+}
+.todo-list{
+    background: #e6e6e6;
+    border-radius: 15px;
+    height: 80%;
+    width: 700px;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
 }
 
+.todo-list_controls{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.todo-list_input{
+    border: none;
+    border-radius: 15px 0 0 15px;
+    padding: 20px 10px;
+}
+
+.todo-list_btn{
+    background: #FBCC28;
+    border-radius: 0 15px 15px 0;
+    border: 0;
+}
+.todo-list_field{
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-list_item{
+    background: #FFEBEB;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
+}
+
+.todo-list_item-done{
+    background: #EBFFED;
+
+}
+
+.todo-list_item-text{
+    
+}
+.todo-list_example{
+    background: #FFEBEB;
+    border-radius: 15px;
+    padding: 10px;
+}
