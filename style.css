@@ -60,6 +60,7 @@ html, body{
 }
 
 .todo-list_item-text{
+    flex-grow: 1;
     
 }
 .todo-list_example{
