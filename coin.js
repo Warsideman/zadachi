@@ -2,36 +2,90 @@ const inputEl= document.getElementById('example')
 const btnEl= document.querySelector('.todo-list_btn')
 const fieldEl = document.querySelector('.todo-list_field')
 
+const todoList = [
+    
+]
 
+let id =3
 
-function onBtnClick(){
-    // const data = inputEl.value
-    if (inputEl.value.length){
+function render(){
+    fieldEl.innerHTML= ''
+    for(let item of todoList){
+        const el = createHtmlElement(item)
+        fieldEl.appendChild(el)
+    }
+}
+
+function createHtmlElement(item){
+
         const divEl = document.createElement('div')
         divEl.classList.add('todo-list_item')
         
 
         const checkbox = document.createElement('input')
         checkbox.type = 'checkbox'
+        if(item.isDone){
+            checkbox.checked = true
+            divEl.classList.add('todo-list_item-done')
+        }
 
         const text = document.createElement('p')
         text.classList.add('todo-list_item-text')
-        text.innerText= inputEl.value
+        text.innerText= item.text
 
         const img= document.createElement('img')
         img.src = 'Vector.svg'
+
+        img.addEventListener('click',()=>{
+            removeItem(item.id)
+        })
 
         divEl.appendChild(checkbox)
         divEl.appendChild(text)
         divEl.appendChild(img)
 
-        fieldEl.appendChild(divEl)
-        inputEl.value= ''
+        checkbox.addEventListener('click', ()=>{
+            item.isDone = !item.isDone
+            render()
+        })
+        
+        
+
+        return divEl
     }
+
+function updateItem(id){
+    constitem = todoList.find((i)  =>i.id === id)
+    item.isDone = !item.isDone
+    render()
 }
 
-btnEl.addEventListener('click',onBtnClick)
+function removeItem(id){
+    const idx = todoList.findIndex((i)=>i.id === id)
+    todoList.splice(idx, 1)
+    render()
+}
 
-// btnEl.addEventListener('click',() => {
-//     console.log('Clicked');
-// })
+function addItem(){
+    if(inputEl.value){
+        const obj = {
+            text: inputEl.value,
+            isDone: false,
+            id: id++
+        }
+        // obj.text = inputEl.value
+        // obj.isDone = false
+        // obj.id = id++
+        todoList.push(obj)
+        inputEl.value= ''
+        render()
+    }
+    
+}
+
+
+btnEl.addEventListener('click',addItem)
+
+render()
+
+

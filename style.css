@@ -56,6 +56,7 @@ html, body{
 
 .todo-list_item-done{
     background: #EBFFED;
+    text-decoration: line-through;
 
 }
 
