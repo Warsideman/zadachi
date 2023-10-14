@@ -1,22 +1,64 @@
 <script>
     import ToDoItem from "./ToDoItem.svelte";
     import ToDoControls from "./ToDoControls.svelte";
+	import { onMount } from "svelte";
 
-    const items = [
-        {
-            id: 1,
-            text: 'Warside',
+    let items = [];
+    let id =0;
+
+    onMount(()=>{
+        if(localStorage.key('items')){
+            items = JSON.parse(localStorage.getItem('items'))
+        }
+        if(items.length){
+            items.forEach((i)=>{
+                if (id < i.id){
+                    id = i.id;
+                }
+        });
+        id++;
+        }
+    });
+
+    function onChangeStatus(event){
+        const item = items.find((i) => i.id === event.detail.id);
+        item.isDone= !item.isDone;
+        items = items
+        localStorage.setItem('items', JSON.stringify(items));
+
+    }
+
+    function onAddItem(event){
+        const item = {
+            id: id++,
+            text: event.detail.text,
             isDone: false
-        },  
-    ];
+        };
+        items.push(item);
+        items = items;
+        localStorage.setItem('items', JSON.stringify(items));
+    }
+
+    function onDeleteItem(event){
+        const idx = items.findIndex(i=>i.id === event.detail.id);
+        items.splice(idx, 1);
+        items= items;
+        localStorage.setItem('items', JSON.stringify(items));
+    }
+        
 </script>
 
 
 <div class="todo-app">
-    <ToDoControls />
+    <ToDoControls on:add={onAddItem}/>
     <div class="todo-app_field">
         {#each items as item}
-            <ToDoItem id={item.id} text={item.text} isDone={item.isDone}/>
+            <ToDoItem 
+            id={item.id} 
+            text={item.text} 
+            isDone={item.isDone} 
+            on:change={onChangeStatus} 
+            on:remove={onDeleteItem}/>
         {/each}
         
         
